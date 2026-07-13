@@ -21,5 +21,5 @@ This is a FastAPI web dashboard for predicting energy consumption in steel manuf
 ### Step 1: Clone or Download the Repository
 
 ```bash
-git clone https://github.com/yourusername/steel-energy-dashboard.git
-cd steel-energy-dashboard
+https://github.com/HASEEB99999/steel-energy-prediction-dashboard
+cd steel-energy-prediction-dashboard
