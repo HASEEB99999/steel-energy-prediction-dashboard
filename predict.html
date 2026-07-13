@@ -1,0 +1,91 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Predict - Energy Dashboard{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>🔮 Predict Energy Consumption</h1>
+    <p>Enter operational parameters below to get a real-time prediction.</p>
+</div>
+
+<div class="card">
+    <h2>Enter Parameters</h2>
+    <form method="POST" action="/predict">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div class="form-group">
+                <label>Lagging Reactive Power (kVarh)</label>
+                <input type="number" step="0.01" name="Lagging_Current_Reactive_Power_kVarh" required>
+            </div>
+            <div class="form-group">
+                <label>Leading Reactive Power (kVarh)</label>
+                <input type="number" step="0.01" name="Leading_Current_Reactive_Power_kVarh" value="0">
+            </div>
+            <div class="form-group">
+                <label>Lagging Power Factor</label>
+                <input type="number" step="0.01" name="Lagging_Current_Power_Factor" required>
+            </div>
+            <div class="form-group">
+                <label>Leading Power Factor</label>
+                <input type="number" step="0.01" name="Leading_Current_Power_Factor" value="0">
+            </div>
+            <div class="form-group">
+                <label>NSM</label>
+                <input type="number" step="0.01" name="NSM" required>
+            </div>
+            <div class="form-group">
+                <label>Hour (0-23)</label>
+                <input type="number" min="0" max="23" name="hour" required>
+            </div>
+            <div class="form-group">
+                <label>Month (1-12)</label>
+                <input type="number" min="1" max="12" name="month" required>
+            </div>
+            <div class="form-group">
+                <label>Power Factor Ratio</label>
+                <input type="number" step="0.01" name="Power_Factor_Ratio" required>
+            </div>
+            <div class="form-group">
+                <label>Load Type</label>
+                <select name="Load_Type">
+                    <option value="Light_Load">Light Load</option>
+                    <option value="Medium_Load">Medium Load</option>
+                    <option value="Maximum_Load">Maximum Load</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Weekend</label>
+                <select name="is_weekend">
+                    <option value="0">Weekday</option>
+                    <option value="1">Weekend</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Day of Week</label>
+                <select name="Day_of_week">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:20px;">
+            <button type="submit" class="btn btn-primary" style="font-size:18px;padding:12px 40px;">
+                ⚡ Predict Energy
+            </button>
+        </div>
+    </form>
+
+    {% if prediction %}
+    <div style="background:#d4edda;border:1px solid #c3e6cb;border-radius:10px;padding:20px;margin-top:20px;text-align:center;">
+        <h3 style="color:#155724;">✅ Predicted Energy Consumption</h3>
+        <p style="font-size:48px;font-weight:bold;color:#155724;">{{ prediction }} kWh</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

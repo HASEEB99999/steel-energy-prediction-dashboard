@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Energy Dashboard{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>📊 Exploratory Data Analysis Dashboard</h1>
+    <p>Visualizations showing key patterns in steel industry energy consumption.</p>
+</div>
+
+<div class="card">
+    <h2>⏰ Energy by Hour</h2>
+    <p>Average energy usage throughout the day shows peak at noon and trough at midnight.</p>
+    <div style="text-align:center;margin-top:15px;">
+        <img src="/static/hourly_consumption.png" alt="Hourly Consumption" style="max-width:100%;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+    </div>
+</div>
+
+<div class="card">
+    <h2>🏭 Energy by Load Type</h2>
+    <p>Maximum Load consumes 3.5x more energy than Light Load.</p>
+    <div style="text-align:center;margin-top:15px;">
+        <img src="/static/load_type_analysis.png" alt="Load Type Analysis" style="max-width:100%;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+    </div>
+</div>
+
+<div class="card">
+    <h2>🔗 Correlation Heatmap</h2>
+    <p>Reactive Power and NSM are the strongest predictors of energy consumption.</p>
+    <div style="text-align:center;margin-top:15px;">
+        <img src="/static/correlation_heatmap.png" alt="Correlation Heatmap" style="max-width:100%;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+    </div>
+</div>
+{% endblock %}
